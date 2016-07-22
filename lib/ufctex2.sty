@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Customizações do abnTeX2 (http://abnTeX2.googlecode.com)           %%
-%% para a Universidade Federal do Ceara - UFC                       %%
-%%                                                                    %%
+%% para a Universidade Federal do Ceara - UFC                         %%
+%% baseado no ueceTex2                                                %%
 %% This work may be distributed and/or modified under the             %%
 %% conditions of the LaTeX Project Public License, either version 1.3 %%
 %% of this license or (at your option) any later version.             %%
@@ -12,14 +12,17 @@
 %%                                                                    %%
 %% This work has the LPPL maintenance status `maintained'.            %%
 %%                                                                    %%
-%% The Current Maintainer of this work is Alexsandro Oliveira Alexandrino         %%
+%% The Current Maintainer of this work is:                            %%
+%%  Alexsandro Oliveira Alexandrino                                   %%
 %%                                                                    %%
-%% Project available on: https://github.com/sandrooliveira1501        %%
+%% Project available on:                                              %%
+%% https://github.com/sandrooliveira1501/template-tcc2                %%
 %%                                                                    %%
 %% Further information about abnTeX2                                  %%
 %% are available on http://abntex2.googlecode.com/                    %%
 %%                                                                    %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % Se você quer ver as margens do documento no PDF, descomente essa linha
 % As linhas das margens serao impressas
 %\usepackage[showframe, pass]{geometry}
@@ -93,10 +96,11 @@
 \renewcommand{\ABNTEXsubsubsubsectionfont}{\normalfont\itshape}
 \renewcommand{\ABNTEXsubsubsubsectionfontsize}{\normalsize}
 
-% Margen da legenda da figura e da tabela
+% Margem da legenda da figura e da tabela
 \captionsetup{
-	justification=centering,% Centraliza o caption
-	skip=0pt                %Retira o espaco entre a figura/tabela e o caption
+	justification=justified, % Justifica o caption
+	singlelinecheck=false,
+    skip=0pt                %Retira o espaco entre a figura/tabela e o caption
 }
 
 % Remove o ponto final de cada entrada da
@@ -114,6 +118,8 @@
 	\renewcommand{\indexname}{\'INDICE}
 	\renewcommand{\contentsname}{Sum\'ario \vspace{5pt}}
 	\renewcommand{\listadesimbolosname}{Lista de Símbolos}
+	\renewcommand{\listfigurename}{Lista de Figuras}
+	%\renewcommand{\listadeabreviaturasname}{LISTA DE ABREVIATURAS E SIGLAS}
 }
 
 % Por algum motivo, o algorithm2e estava pegando algumas palavras do espanhol.
@@ -281,7 +287,7 @@
 	\hypersetup{ %
 		pdftitle={\imprimirtitulo},%
 		pdfauthor={\imprimirautor}, %
-		pdfsubject={Powered by ufctex2 - Acesse https://github.com/sandrooliveira1501} %
+		pdfsubject={Powered by ufctex2 - Acesse https://github.com/sandrooliveira1501/template-tcc2} %
 	}%
 	% Define a altura das equacoes matematicas
 %	\abovedisplayskip=-1pt plus 3pt minus 9pt
@@ -1223,6 +1229,15 @@
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%      Lista de ABREVIATURAS ADICIONAL%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\imprimirlistadeabreviaturasesiglasaux}[1]{
+	\input{#1}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%              Glossário              %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1450,3 +1465,11 @@
 }%
 }
 \makeatother
+
+
+%% Evitar quebra de linha no meio da palavra
+
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
